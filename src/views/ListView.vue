@@ -28,8 +28,7 @@ export default {
     };
   },
   created() {
-    getData("https://api.themoviedb.org/3/movie/popular?api_key=d4ccd1acf9a19b03c7b99d6759cf46f3&language=en-US&page=1").then(x => this.items = x);
-    console.log(this.items)
+    getData("https://api.themoviedb.org/3/movie/popular?api_key=d4ccd1acf9a19b03c7b99d6759cf46f3&language=fr-fr&page=1").then(items => this.items = items);
   },
 };
 </script>
