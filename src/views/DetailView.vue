@@ -17,32 +17,18 @@
 </template>
 
 <script>
+import getData from '../services/DataServices';
 export default {
   name: "DetailView",
-  methods: {
-    async getData() {
-      try {
-        let response = await fetch(
-          "https://api.themoviedb.org/3/movie/" +
-            this.$route.params.id +
-            "?api_key=d4ccd1acf9a19b03c7b99d6759cf46f3&language=en-US&page=1"
-        );
-        let data = await response.json();
-        console.log(data);
-        this.item = data;
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  },
   data() {
     return {
       item: null,
     };
   },
   created() {
-    this.getData();
-    console.info(this.item);
+    this.item = getData("https://api.themoviedb.org/3/movie/" +
+            this.$route.params.id +
+            "?api_key=d4ccd1acf9a19b03c7b99d6759cf46f3&language=en-US&page=1").then(x => this.item = x);
   },
 };
 </script>
